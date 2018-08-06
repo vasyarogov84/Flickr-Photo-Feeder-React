@@ -11,7 +11,6 @@ class FlickrPhoto extends Component {
     };
     displayPhotos = (data) => {
         this.setState({ data: data.items });
-        console.log("data", this.state.data);
     }
 
     getPhotos = (e) => {
