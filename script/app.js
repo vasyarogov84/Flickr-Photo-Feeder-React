@@ -9,8 +9,13 @@ class FlickrPhoto extends Component {
     state = {
         data: []
     };
+    displayPhotos = (data) => {
+        this.setState({ data: data.items });
+        console.log("data", this.state.data);
+    }
 
     getPhotos = (e) => {
+        this.setState({ data: [] });
         e.preventDefault();
         let searchTerm = e.target.elements.input.value;
         let flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -19,17 +24,17 @@ class FlickrPhoto extends Component {
             tags: searchTerm,
             format: "json"
         };
-        function displayPhotos(data) {
-            console.log(data);
-        }
 
-        $.getJSON(flickerAPI, flickrOptions, displayPhotos);
-      
+
+
+        $.getJSON(flickerAPI, flickrOptions, this.displayPhotos);
+
     }
     render() {
         let style = {
             height: 20
         };
+        var uniqid = require('uniqid');
         return (
             <div>
                 <div style={style}></div>
@@ -45,9 +50,14 @@ class FlickrPhoto extends Component {
                             <button>Search</button>
                         </form>
                     </div>
-                    <div className="photoFeeder">{this.state.data.length !== 0 && this.state.data.map((el) => {
-                        return el;
-                    })}</div>
+                    <div className="photoFeeder">
+                        <ul className="photoLibrary">
+                            {this.state.data.length !== 0 && this.state.data.map((el) => {
+                                return <li className="photoParametrs" key={uniqid()}><img src={el.media.m} /></li>;
+                            })}
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         );

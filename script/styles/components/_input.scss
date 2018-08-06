@@ -26,6 +26,44 @@
 }
 
 .photoFeeder {
+    ul {
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style-type: none;
+        justify-content: space-between;
+
+        li {
+            padding: 15px;
+            background-color: #FEFEFE;
+            margin-bottom:10px;
+
+            img {
+                width: 150px;
+                height: auto;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-transition: 0.3s;
+                -moz-transition: 0.3s;
+                -o-transition: 0.3s;
+                transition: 0.3s;
+                -webkit-box-shadow: -2px 2px 5px 0px rgba(173,173,173,1);
+                -moz-box-shadow: -2px 2px 5px 0px rgba(173,173,173,1);
+                box-shadow: -2px 2px 5px 0px rgba(173,173,173,1);
+            }
+        }
+    }
+}
+
+
+
+.photoLibrary {
+    align-items:center;
+    justify-content: center;
     margin: auto;
-    width: 50%;
+    width:50%;
 }
